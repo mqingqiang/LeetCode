@@ -2,10 +2,10 @@ package common.datastruct;
 
 import java.util.Objects;
 
-import com.sun.org.apache.bcel.internal.generic.RETURN;
-
 /**
  * 链表节点
+ * 节点的值为 int 类型是考虑到 LeetCode 链表题目为 int 型，无需实现泛型那么复杂。
+ * add() 方法允许在当前头结点链尾增加新节点，主要为了便于刷题测试
  *
  * @author mqq
  * @date 2019-12-29
@@ -24,6 +24,15 @@ public class ListNode {
 	public ListNode(int x) {
 		val = x;
 		next = null;
+	}
+
+	public void add(int newValue) {
+		ListNode newNode = new ListNode(newValue);
+		ListNode next = this;
+		while (next.next != null) {
+			next = next.next;
+		}
+		next.next = newNode;
 	}
 
 	@Override
