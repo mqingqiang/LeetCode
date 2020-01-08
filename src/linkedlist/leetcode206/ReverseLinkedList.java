@@ -16,7 +16,7 @@ public class ReverseLinkedList {
 		head.add(3);
 		head.add(4);
 		head.add(5);
-		Solution solution = new RecurseSolution();
+		Solution solution = new Solution();
 		ListUtils.printList(head);
 		ListNode reverseList = solution.reverseList(head);
 		ListUtils.printList(reverseList);
@@ -39,11 +39,12 @@ class Solution {
 			return head;
 		}
 		ListNode prev = null;
-		while (head != null) {
-			ListNode temp = head.next;
-			head.next = prev;
-			prev = head;
-			head = temp;
+		ListNode curr = head;
+		while (curr != null) {
+			ListNode temp = curr.next;
+			curr.next = prev;
+			prev = curr;
+			curr = temp;
 		}
 		return prev;
 	}
