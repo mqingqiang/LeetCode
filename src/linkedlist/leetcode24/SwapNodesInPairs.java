@@ -1,12 +1,11 @@
 package linkedlist.leetcode24;
 
-import java.util.List;
-
 import common.datastruct.ListNode;
 import common.util.ListUtils;
 
 /**
  * 24. 两两交换链表中的节点
+ * https://leetcode.com/problems/swap-nodes-in-pairs/
  *
  * @author mqq
  * @date 2020-01-07
