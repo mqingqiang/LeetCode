@@ -30,7 +30,7 @@ public class ListUtils {
 	 */
 	public static void printList(ListNode head, int depth) {
 		if (head == null) {
-			return;
+			System.out.print("head is NULL");
 		}
 		StringBuilder printStr = new StringBuilder();
 		Map<ListNode, Integer> visited = new HashMap<>();
