@@ -17,7 +17,7 @@ public class ReverseLinkedList {
 		head.add(3);
 		head.add(4);
 		head.add(5);
-		Solution solution = new Solution();
+		Solution solution = new LoopSolution();
 		ListUtils.printList(head);
 		ListNode reverseList = solution.reverseList(head);
 		ListUtils.printList(reverseList);
@@ -70,5 +70,32 @@ class RecurseSolution extends Solution {
 		head.next.next = head;
 		head.next = null;
 		return listNode;
+	}
+}
+
+/**
+ * 迭代法II
+ * 思路：
+ * 1、增加一个空白节点，指向 head 节点
+ * 2、记录 curr=head.next，每次循环把 curr 节点放到链表的最前面，curr 指针后移
+ * 3、重复步骤2
+ * 4、循环到最后，链表的最后一个就会变成第一个元素了
+ */
+class LoopSolution extends Solution {
+	@Override
+	public ListNode reverseList(ListNode head) {
+		if (head == null || head.next == null) {
+			return head;
+		}
+		ListNode dummy = new ListNode(-1);
+		dummy.next = head;
+		ListNode curr = head.next;
+		while (curr != null) {
+			head.next = curr.next;
+			curr.next = dummy.next;
+			dummy.next = curr;
+			curr = head.next;
+		}
+		return dummy.next;
 	}
 }
