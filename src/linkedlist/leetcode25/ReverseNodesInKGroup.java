@@ -21,7 +21,7 @@ public class ReverseNodesInKGroup {
 		head.add(7);
 		ListUtils.printList(head);
 
-		Solution solution = new RecurseSolutionII();
+		Solution solution = new RecurseSolutionIII();
 		ListNode reversedHead = solution.reverseKGroup(head, 3);
 		ListUtils.printList(reversedHead);
 	}
@@ -137,5 +137,59 @@ class RecurseSolutionII extends Solution {
 			}
 		}
 		return dummy.next;
+	}
+}
+
+/**
+ * 递归III
+ * 思路：
+ * 1、定义空节点 dummy，指向头节点
+ * 2、先找出前 k 个结点，递归反转 k+1 结点后的元素
+ * 3、连接前 k 个结点与已翻转的 k+1 结点
+ * 4、返回 dummy.next，即可得到反转后的链表
+ */
+class RecurseSolutionIII extends Solution {
+	@Override
+	public ListNode reverseKGroup(ListNode head, int k) {
+		if (head == null || head.next == null || k < 2) {
+			return head;
+		}
+		ListNode dummy = new ListNode(-1);
+		dummy.next = head;
+		ListNode prev = dummy;
+		int count = 0;
+		while (head != null) {
+			count++;
+			if (count % k == 0) {
+				prev = reverse(prev, head.next);
+				head = prev.next;
+			} else {
+				head = head.next;
+			}
+		}
+		return dummy.next;
+	}
+
+	/**
+	 * 反转某个区间的链表节点，如：
+	 * prev = [1, 2, 3, 4, 5]
+	 * next = [5]
+	 * 则反转区间为 [2, 3, 4]
+	 * 反转后链表为 [1, 4, 3, 2, 5]
+	 *
+	 * @param prev 反转区间的前一个节点 [1, 2, ,3 ,4 5]
+	 * @param next 反转区间的后一个节点 [5]
+	 * @return 反转区间的最后一个节点 [2, 5]
+	 */
+	private ListNode reverse(ListNode prev, ListNode next) {
+		ListNode last = prev.next;
+		ListNode curr = last.next;
+		while (curr != next) {
+			last.next = curr.next;
+			curr.next = prev.next;
+			prev.next = curr;
+			curr = last.next;
+		}
+		return last;
 	}
 }
