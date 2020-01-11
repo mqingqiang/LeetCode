@@ -1,9 +1,10 @@
-package array.leetcode84;
+package stack.leetcode84;
 
 import java.util.Stack;
 
 /**
  * 84. 柱状图中最大的矩形
+ * https://leetcode-cn.com/problems/largest-rectangle-in-histogram/
  *
  * @author mqq
  * @date 2020-01-11
