@@ -34,6 +34,8 @@ public class ReverseNodesInKGroup {
  * 2、其中已翻转和待翻转部分是一个链表，未翻转部分是一个链表，是割裂开来的两个链表
  * 3、每次循环翻转待翻转部分，翻转过后把2个链表连接起来，寻找下一个待翻转部分，重新割裂，重复该步骤。
  * 4、待循环到链表末尾，即反转成功
+ * 时间复杂度：O(k*n)
+ * 空间复杂度：O(n)
  */
 class Solution {
 	public ListNode reverseKGroup(ListNode head, int k) {
@@ -81,6 +83,8 @@ class Solution {
  * 2、先找出前 k 个结点，递归反转 k+1 结点后的元素
  * 3、连接前 k 个结点与已翻转的 k+1 结点
  * 4、返回 dummy.next，即可得到反转后的链表
+ * 时间复杂度：O(k*n)
+ * 空间复杂度：O(n^2)
  */
 class RecurseSolution extends Solution {
 	@Override
@@ -112,6 +116,8 @@ class RecurseSolution extends Solution {
  * 2、先找出前 k 个结点，递归反转 k+1 结点后的元素
  * 3、连接前 k 个结点与已翻转的 k+1 结点
  * 4、返回 dummy.next，即可得到反转后的链表
+ * 时间复杂度：O(k*n)
+ * 空间复杂度：O(n)
  */
 class RecurseSolutionII extends Solution {
 	@Override
@@ -147,6 +153,8 @@ class RecurseSolutionII extends Solution {
  * 2、先找出前 k 个结点，递归反转 k+1 结点后的元素
  * 3、连接前 k 个结点与已翻转的 k+1 结点
  * 4、返回 dummy.next，即可得到反转后的链表
+ * 时间复杂度：O(k*n)
+ * 空间复杂度：O(k)
  */
 class RecurseSolutionIII extends Solution {
 	@Override
