@@ -58,15 +58,15 @@ class StackSolution extends Solution {
 		map.put('{', '}');
 		map.put('[', ']');
 		Deque<Character> stack = new ArrayDeque<>();
+		char[] chars = s.toCharArray();
 		for (int i = 0; i < s.length(); i++) {
-			char c = s.charAt(i);
-			if (Objects.equals(stack.peekFirst(), c)) {
+			if (Objects.equals(stack.peekFirst(), chars[i])) {
 				stack.removeFirst();
 			} else {
-				if (!map.containsKey(c)) {
+				if (!map.containsKey(chars[i])) {
 					return false;
 				}
-				stack.addFirst(map.get(c));
+				stack.addFirst(map.get(chars[i]));
 			}
 		}
 		return stack.isEmpty();
