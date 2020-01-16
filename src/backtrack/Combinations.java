@@ -40,15 +40,15 @@ class Solution {
 
 	private void helper(int n, int k, int start, List<Integer> list, List<List<Integer>> res) {
 		// terminator
-		if (list.size() == k) {
+		if (k == 0) {
 			res.add(new ArrayList<>(list));
 			return;
 		}
 		// process current logic
-		for (int i = start; i <= n - (k - list.size()) + 1; i++) {
+		for (int i = start; i <= n - k + 1; i++) {
 			list.add(i);
 			// drill down
-			helper(n, k, i + 1, list, res);
+			helper(n, k - 1, i + 1, list, res);
 			list.remove(list.size() - 1);
 		}
 	}
