@@ -1,4 +1,4 @@
-package backtrack;
+package backtrack.leetcode77;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,6 +7,8 @@ import java.util.List;
  * 77. 组合
  * https://leetcode-cn.com/problems/combinations/
  * 好的题解：https://leetcode-cn.com/problems/combinations/solution/hui-su-suan-fa-jian-zhi-python-dai-ma-java-dai-ma-/
+ * 全球站第一条评论：
+ * https://leetcode.com/problems/combinations/discuss/27002/Backtracking-Solution-Java
  *
  * @author mqq
  * @date 2020-01-16
