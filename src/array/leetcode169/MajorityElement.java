@@ -1,7 +1,9 @@
 package array.leetcode169;
 
 import java.util.Arrays;
+import java.util.Deque;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.Map;
 
 /**
@@ -12,7 +14,12 @@ import java.util.Map;
  * @date 2020-01-17
  */
 public class MajorityElement {
-
+	public static void main(String[] args) {
+		Solution solution = new StackSolution();
+		int[] nums = {2, 2, 1, 1, 1, 2, 2};
+		int i = solution.majorityElement(nums);
+		System.out.println("i = " + i);
+	}
 }
 
 /**
@@ -80,5 +87,27 @@ class MooreVotingSolution extends Solution {
 			count += (major == num) ? 1 : -1;
 		}
 		return major;
+	}
+}
+
+/**
+ * 借助栈
+ * 思路：
+ * 1、当数组元素等于栈顶元素或栈为空时入栈
+ * 2、不等于栈顶元素则出栈
+ * 3、最后的栈顶元素就是众数
+ */
+class StackSolution extends Solution {
+	@Override
+	public int majorityElement(int[] nums) {
+		Deque<Integer> stack = new LinkedList<>();
+		for (int num : nums) {
+			if (stack.isEmpty() || stack.peekFirst() == num) {
+				stack.addFirst(num);
+			} else {
+				stack.removeFirst();
+			}
+		}
+		return stack.removeFirst();
 	}
 }
