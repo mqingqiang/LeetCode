@@ -55,9 +55,9 @@ class Solution {
 	}
 
 	private void printQueens(int[] ans) {
-		for (int row = 0; row < ans.length; row++) {
+		for (int an : ans) {
 			for (int column = 0; column < ans.length; column++) {
-				if (ans[row] == column) {
+				if (an == column) {
 					System.out.print("Q ");
 				} else {
 					System.out.print("* ");
