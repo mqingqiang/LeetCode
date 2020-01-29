@@ -51,3 +51,30 @@ class Solution {
 		return ans;
 	}
 }
+
+/**
+ * 深度优先搜索（DFS）
+ */
+class RecursionSolution extends Solution {
+	@Override
+	public List<Integer> largestValues(TreeNode root) {
+		List<Integer> ans = new LinkedList<>();
+		if (root == null) {
+			return ans;
+		}
+		helper(ans, 0, root);
+		return ans;
+	}
+
+	private void helper(List<Integer> ans, int level, TreeNode root) {
+		if (root == null) {
+			return;
+		}
+		if (ans.size() >= level) {
+			ans.add(Integer.MIN_VALUE);
+		}
+		ans.set(level, Math.max(ans.get(level), root.val));
+		helper(ans, level + 1, root.left);
+		helper(ans, level + 1, root.right);
+	}
+}
